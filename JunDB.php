@@ -35,7 +35,7 @@ class JunDB
      * @param array $storeData 需要存储的数据
      * @return bool 添加成功返回true,反之返回false
      */
-    public function store($table, $storeData)
+    public function add($table, $storeData)
     {
         if (is_array($storeData)) { //传递进来的是数组才会进行处理
             //处理SQL语句
@@ -208,7 +208,7 @@ class JunDB
         } elseif ($andor == 'or') {
             $query = substr($query, 0, strlen($query) - 3);
         }
-        
+
         //处理变量绑定
         $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $prepare = $this->pdo->prepare($query);

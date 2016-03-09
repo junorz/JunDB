@@ -48,7 +48,7 @@ This equals `SELECT * FROM usertable WHERE name='Jun' and id=10`.
 
 ####Insert / 添加数据
 ```
-$data = $mydb->store('usertable',[
+$data = $mydb->add('usertable',[
     'name' => 'New',
     'email' => 'new@domain.com'
 ]);
@@ -90,3 +90,6 @@ $data = $mydb->safe($sql,[
     'id3' => '20'
 ])->fetchAll();
 ```
+
+##LICENSE / 开源协议
+The JunDB is open-sourced software licensed under the MIT license.
