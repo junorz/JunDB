@@ -73,7 +73,7 @@ $data = $mydb->del('usertable', [
     'email' => 'new@domain.com'
 ], 'or');
 ```
-This equals `DELETE FROM usertable WHERE name='' or id IN(50,51) or email='new@domain.com'`
+This equals `DELETE FROM usertable WHERE name='' or id IN(50,51) or email='new@domain.com'`   
 If you omit the third parameter,it will equal to`DELETE FROM usertable WHERE name='' and id IN(50,51) and email='new@domain.com'`
 
 ####execute SQL safely / 安全地执行一条SQL语句
