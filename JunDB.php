@@ -191,20 +191,40 @@ class JunDB
         //处理SQL语句
         $query = "DELETE FROM $table WHERE";
         foreach ($delData as $key => $value) {
-            $query = $query . " $key=:$key " . $andor;
+            if (is_array($value)) {
+                $query = $query . " $key IN(";
+                for ($i = count($value); $i > 0; $i--) {
+                    $query = $query . '?,';
+                }
+                $query = substr($query, 0, strlen($query) - 1);
+                $query = $query . ') ' . $andor;
+            } else {
+                $query = $query . " $key=? " . $andor;
+            }
+
         }
         if ($andor == 'and') {
             $query = substr($query, 0, strlen($query) - 4);
         } elseif ($andor == 'or') {
             $query = substr($query, 0, strlen($query) - 3);
         }
-
+        
         //处理变量绑定
         $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $prepare = $this->pdo->prepare($query);
+        $times = 1;
         foreach ($delData as $key => $value) {
-            ${$key} = $value;
-            $prepare->bindParam(":$key", ${$key});
+            if (is_array($value)) {
+                foreach ($value as $subvalue) {
+                    ${'value' . $times} = $subvalue;
+                    $prepare->bindParam($times,${'value' . $times});
+                    $times++;
+                }
+            } else {
+                ${'value' . $times} = $value;
+                $prepare->bindParam($times,${'value' . $times});
+                $times++;
+            }
         }
         return $prepare->execute();
     }

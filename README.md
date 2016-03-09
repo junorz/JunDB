@@ -69,11 +69,12 @@ This equals `UPDATE usertable SET name='newupdate',email='newupdate@domain.com' 
 ```
 $data = $mydb->del('usertable', [
     'name' => '',
+    'id' => [50, 51],
     'email' => 'new@domain.com'
 ], 'or');
 ```
-This equals `DELETE FROM usertable WHERE name='' or email='new@domain.com'`   
-If you omit the third parameter,it will equal to`DELETE FROM usertable WHERE name='' and email='new@domain.com'`
+This equals `DELETE FROM usertable WHERE name='' or id IN(50,51) or email='new@domain.com'`
+If you omit the third parameter,it will equal to`DELETE FROM usertable WHERE name='' and id IN(50,51) and email='new@domain.com'`
 
 ####execute SQL safely / 安全地执行一条SQL语句
 Use an array to bine data appear in SQL syntax.  
