@@ -230,6 +230,17 @@ class JunDB
     }
 
     /**--------------------------------------------
+     * 返回一个表里的所有记录
+     *---------------------------------------------
+     * @param string $table 要操作的数据表
+     * @return array 返回表里所有记录
+     */
+    public function all($table)
+    {
+        return $this->pdo->query("SELECT * FROM $table")->fetchAll();
+    }
+
+    /**--------------------------------------------
      * 安全地执行一条SQL语句
      *---------------------------------------------
      * @param string $query SQL语句
@@ -249,6 +260,8 @@ class JunDB
             return $prepare;
         }
     }
+
+
 
 
 }

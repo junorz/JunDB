@@ -76,6 +76,13 @@ $data = $mydb->del('usertable', [
 This equals `DELETE FROM usertable WHERE name='' or id IN(50,51) or email='new@domain.com'`   
 If you omit the third parameter,it will equal to`DELETE FROM usertable WHERE name='' and id IN(50,51) and email='new@domain.com'`
 
+####All / 返回所有记录
+Use `all` function to get all records.
+使用`all`方法来返回数据表的所有记录。
+```
+$data = $mydb->all('usertable');
+```
+
 ####execute SQL safely / 安全地执行一条SQL语句
 Use an array to bine data appear in SQL syntax.  
 The `safe` function returns a PDOStatement class,so you can do `fetch()` to get first record,or you can do `fetchAll()` to get all records.   
