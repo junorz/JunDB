@@ -5,7 +5,7 @@ A PHP class for CRUD database easily.
 ## Installation / 安装
 Download the JunDB.php to your project and include it.  
 use 'Junorz\JunDB' for namespace issue.  
-下载JunDB.php到你的工程里，并使用use关键字引用它来解决命名空间的一件问题。  
+下载JunDB.php到你的工程里，并使用use关键字引用它来解决命名空间的一些问题。  
 ```
 include_once 'JunDB.php';
 use Junorz\JunDB;
@@ -27,7 +27,7 @@ $mydb = new JunDB([
 1.Get the first record.This will return a one dimensional array.  
 The third parameter `or` can be omitted which defaults to `and`.  
 取得第一条记录。返回的是一个一维的数组。
-第三个数据`or`可以被省略。它的默认值为`and`。
+第三个参数`or`可以被省略。它的默认值为`and`。
 ```
 $data = $mydb->first('usertable',[
     'name' => 'Jun',
