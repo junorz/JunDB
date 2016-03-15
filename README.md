@@ -84,7 +84,7 @@ $data = $mydb->all('usertable');
 ```
 
 ####execute SQL safely / 安全地执行一条SQL语句
-Use an array to bine data appear in SQL syntax.  
+Use an array to bind data appeared in SQL syntax.  
 The `safe` function returns a PDOStatement class,so you can do `fetch()` to get first record,or you can do `fetchAll()` to get all records.   
 使用了一个数组来对SQL语句里的数据进行了绑定。   
 `safe`方法返回的是一个PDOStatement类，你可以使用`fetch()`来取得第一条记录，或使用`fetchAll()`来取得所有记录。
